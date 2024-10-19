@@ -1,0 +1,168 @@
+{
+    "temperature": {
+      "high": {
+        "condition": "value > 100",
+        "message": "Temperature is too high"
+      },
+      "low": {
+        "condition": "value < 0",
+        "message": "Temperature is too low"
+      }
+    },
+    "vibration_level": {
+      "high": {
+        "condition": "value > 50",
+        "message": "Vibration level is too high"
+      }
+    },
+    "oil_pressure": {
+      "low": {
+        "condition": "value < 20",
+        "message": "Oil pressure is too low"
+      }
+    },
+    "lubrication_flow_rate": {
+      "low": {
+        "condition": "value < 5",
+        "message": "Lubrication flow rate is too low"
+      }
+    },
+    "coolant_flow_rate": {
+      "low": {
+        "condition": "value < 10",
+        "message": "Coolant flow rate is too low"
+      }
+    },
+    "tool_wear_level": {
+      "high": {
+        "condition": "value > 70",
+        "message": "Tool wear level is too high"
+      }
+    },
+    "spindle_speed": {
+      "high": {
+        "condition": "value > 5000",
+        "message": "Spindle speed is too high"
+      }
+    },
+    "feed_rate": {
+      "high": {
+        "condition": "value > 300",
+        "message": "Feed rate is too high"
+      }
+    },
+    "cut_depth": {
+      "high": {
+        "condition": "value > 10",
+        "message": "Cut depth is too high"
+      }
+    },
+    "weld_temperature": {
+      "high": {
+        "condition": "value > 1500",
+        "message": "Weld temperature is too high"
+      }
+    },
+    "weld_current": {
+      "high": {
+        "condition": "value > 200",
+        "message": "Weld current is too high"
+      }
+    },
+    "weld_voltage": {
+      "high": {
+        "condition": "value > 30",
+        "message": "Weld voltage is too high"
+      }
+    },
+    "weld_time": {
+      "high": {
+        "condition": "value > 10",
+        "message": "Weld time is too long"
+      }
+    },
+    "force_applied": {
+      "high": {
+        "condition": "value > 1000",
+        "message": "Force applied is too high"
+      }
+    },
+    "cycle_time": {
+      "high": {
+        "condition": "value > 60",
+        "message": "Cycle time is too long"
+      }
+    },
+    "paint_flow_rate": {
+      "low": {
+        "condition": "value < 20",
+        "message": "Paint flow rate is too low"
+      }
+    },
+    "atomizer_speed": {
+      "high": {
+        "condition": "value > 20000",
+        "message": "Atomizer speed is too high"
+      }
+    },
+    "paint_thickness": {
+      "low": {
+        "condition": "value < 50",
+        "message": "Paint thickness is too low"
+      }
+    },
+    "leak_rate": {
+      "high": {
+        "condition": "value > 5",
+        "message": "Leak rate is too high"
+      }
+    },
+    "seal_condition": {
+      "bad": {
+        "condition": "value < 70",
+        "message": "Seal condition is bad"
+      }
+    },
+    "status": {
+      "error": {
+        "condition": "value === 'error'",
+        "message": "Status indicates an error"
+      }
+    },
+    "battery_level": {
+      "low": {
+        "condition": "value < 20",
+        "message": "Battery level is too low"
+      }
+    },
+    "load_weight": {
+      "high": {
+        "condition": "value > 1000",
+        "message": "Load weight is too high"
+      }
+    },
+    "speed": {
+      "high": {
+        "condition": "value > 10",
+        "message": "Speed is too high"
+      }
+    },
+    "navigation_status": {
+      "error": {
+        "condition": "value === 'error'",
+        "message": "Navigation status indicates an error"
+      }
+    },
+    "power_consumption": {
+      "high": {
+        "condition": "value > 5000",
+        "message": "Power consumption is too high"
+      }
+    },
+    "major_anomalies": {
+      "detected": {
+        "condition": "value === true",
+        "message": "Major anomalies detected"
+      }
+    }
+  }

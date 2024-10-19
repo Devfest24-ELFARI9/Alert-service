@@ -1,0 +1,24 @@
+{
+    "teams": {
+      "maintenance": {
+        "machines": ["welding_robot_006", "stamping_press_001", "painting_robot_002", "agv_003", "cnc_milling_004", "leak_test_005"],
+        "metrics": ["vibration_level", "temperature", "oil_pressure", "lubrication_flow_rate", "coolant_flow_rate", "tool_wear_level"]
+      },
+      "production": {
+        "machines": ["welding_robot_006", "stamping_press_001", "cnc_milling_004"],
+        "metrics": ["spindle_speed", "feed_rate", "cut_depth", "weld_temperature", "weld_current", "weld_voltage", "weld_time", "force_applied", "cycle_time", "paint_flow_rate", "atomizer_speed"]
+      },
+      "quality_assurance": {
+        "machines": ["welding_robot_006", "stamping_press_001", "painting_robot_002", "agv_003", "cnc_milling_004", "leak_test_005"],
+        "metrics": ["paint_thickness", "leak_rate", "seal_condition", "status"]
+      },
+      "logistics": {
+        "machines": ["agv_003"],
+        "metrics": ["battery_level", "load_weight", "speed", "navigation_status"]
+      },
+      "management": {
+        "machines": ["welding_robot_006", "stamping_press_001", "painting_robot_002", "agv_003", "cnc_milling_004", "leak_test_005"],
+        "metrics": ["power_consumption", "major_anomalies"]
+      }
+    }
+}
