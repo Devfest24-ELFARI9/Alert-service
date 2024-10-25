@@ -4,7 +4,7 @@ const { startAlertService } = require('./services/alertService');
 const notificationRoutes = require('./routes/notificationsRoute');
 
 const app = express();
-const port = process.env.PORT || 3010;
+const port = process.env.PORT || 3020;
 
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {

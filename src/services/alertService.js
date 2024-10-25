@@ -5,6 +5,9 @@ const Alert = require('../models/Alert');
 const problemTypes = require('../config/problemTypes.json');
 const Notification = require('../models/Notification'); 
 const teams = require('../config/teams.json').teams; 
+const kpiProblems = require('../config/kpiProblems'); 
+const KpiAlert = require('../models/KpiAlert');
+const KpiAlertNotification = require('../models/KpiAlertNotification');
 
 const determineTeam = (machineId, type) => {
   for (const [team, { machines, metrics }] of Object.entries(teams)) {
@@ -54,8 +57,34 @@ const processAlertMessage = async (message) => {
   }
 };
 
+const processKpiAlertMessages = async (message) => {
+  const { KPI_Name, KPI_Value, Timestamp } = JSON.parse(message);
+  // const kpialert = new KpiAlert({ KPI_Name, KPI_Value, Timestamp });
+  // await kpialert.save();
+
+  const problemInfo = kpiProblems[KPI_Name];
+
+  const kpiAlertMessage = {
+    KPI_Name,
+    KPI_Value,
+    Timestamp,
+    ...(problemInfo && { 
+      title: problemInfo.title, 
+      description: problemInfo.description 
+    })
+  };
+
+  // const kpialertnotification = new KpiAlertNotification(kpiAlertMessage);
+  // await kpialertnotification.save();
+
+
+  await sendMessage('kpi-alert-notification-queue', JSON.stringify(kpiAlertMessage));
+  console.log(`KPI Alert processed and notification sent: ${JSON.stringify(kpiAlertMessage)}`);
+};
+
 const startAlertService = async () => {
-  await consumeMessages('alert-queue', processAlertMessage);
+  await consumeMessages('alert-queue', processAlertMessage);//this is the old version where alerts where triggered based on sensor data
+  await consumeMessages('kpi_alert_queue',processKpiAlertMessages);// this is the new version where alerts are generated based on anomalies detected by the anomalie detection model which take in consideration the kpi values
 };
 
 
