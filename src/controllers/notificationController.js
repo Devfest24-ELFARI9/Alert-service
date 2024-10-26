@@ -1,3 +1,4 @@
+const KpiAlertNotification = require('../models/KpiAlertNotification');
 const { fetchNotifications } = require('../services/notificationService');
 const { resolveNotification } = require('../services/notificationService');
 
@@ -22,4 +23,13 @@ const resolveNotificationById = async (req, res) => {
     }
   };
 
-module.exports = { getNotifications , resolveNotificationById };
+const getKpiAlertsNotifications = async ()=>{
+  try{
+    const KpiAlertsNotificationsList = await KpiAlertNotification.find();
+    res.json(KpiAlertsNotificationsList);
+  }catch(error){
+    res.status(500).json({error: "failed to fetch alerts notifications"});
+  }
+}
+
+module.exports = { getNotifications , resolveNotificationById , getKpiAlertsNotifications };

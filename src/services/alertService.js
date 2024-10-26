@@ -59,8 +59,8 @@ const processAlertMessage = async (message) => {
 
 const processKpiAlertMessages = async (message) => {
   const { KPI_Name, KPI_Value, Timestamp } = JSON.parse(message);
-  // const kpialert = new KpiAlert({ KPI_Name, KPI_Value, Timestamp });
-  // await kpialert.save();
+  const kpialert = new KpiAlert({ KPI_Name, KPI_Value, Timestamp });
+  await kpialert.save();
 
   const problemInfo = kpiProblems[KPI_Name];
 
@@ -74,12 +74,22 @@ const processKpiAlertMessages = async (message) => {
     })
   };
 
-  // const kpialertnotification = new KpiAlertNotification(kpiAlertMessage);
-  // await kpialertnotification.save();
+  const kpialertnotification = new KpiAlertNotification(kpiAlertMessage);
+  await kpialertnotification.save();
 
 
   await sendMessage('kpi-alert-notification-queue', JSON.stringify(kpiAlertMessage));
   console.log(`KPI Alert processed and notification sent: ${JSON.stringify(kpiAlertMessage)}`);
+};
+
+const getKpiAlerts = async () => {
+  try {
+      const kpiAlerts = await KpiAlert.find();
+      return kpiAlerts;
+  } catch (error) {
+      console.error('Error fetching KPI alerts:', error);
+      throw error;
+  }
 };
 
 const startAlertService = async () => {
@@ -88,4 +98,4 @@ const startAlertService = async () => {
 };
 
 
-module.exports = { startAlertService };
+module.exports = { startAlertService , getKpiAlerts };

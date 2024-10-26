@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const { startAlertService } = require('./services/alertService');
 const notificationRoutes = require('./routes/notificationsRoute');
+const alertRouters = require('./routes/alertRoute');
 
 const app = express();
 const port = process.env.PORT || 3020;
@@ -14,6 +15,7 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
   .then(() => {
     console.log('Alert service started');
     app.use('/',notificationRoutes)
+    app.use('/',alertRouters)
     app.listen(port, () => {
       console.log(`Server is running on port ${port}`);
     });
